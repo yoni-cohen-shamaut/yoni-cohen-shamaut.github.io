@@ -113,12 +113,14 @@ nav.main a:hover{opacity:1;border-bottom-color:var(--brass)}
 .profile-text p{color:var(--muted)}
 .profile-text p.lead{font-size:1.2rem;color:var(--ink);font-weight:500}
 .portrait{position:relative;aspect-ratio:4/5;max-width:100%;background:var(--navy);color:var(--on-navy);display:grid;align-content:end;padding:32px;overflow:hidden}
-.portrait svg.bg{position:absolute;inset:0;width:100%;height:100%}
+.portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,22,36,0) 45%,rgba(10,22,36,.92) 100%)}
+.portrait .cap,.portrait .lic{z-index:1}
 .portrait .cap{position:relative;display:grid;gap:4px}
 .portrait .cap b{font-size:1.6rem;font-weight:800}
 .portrait .cap span{color:var(--on-navy-muted)}
 .portrait .lic{position:relative;margin-top:18px;border-top:1px solid var(--navy-line);padding-top:14px;font-size:.9rem;color:var(--brass);font-variant-numeric:tabular-nums;letter-spacing:.05em}
-@media (max-width:900px){.profile .wrap{grid-template-columns:1fr}.portrait{aspect-ratio:16/10}}
+@media (max-width:900px){.profile .wrap{grid-template-columns:1fr}.portrait{max-width:440px;width:100%}}
 
 /* Services */
 .services{background:var(--mist)}
@@ -299,12 +301,7 @@ footer.site{background:var(--navy);color:var(--on-navy);font-size:.92rem}
   <section class="sec profile" id="profile">
     <div class="wrap">
       <div class="portrait">
-        <svg class="bg" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <g fill="none" stroke="rgba(238,242,246,.1)" stroke-width="1">
-            <path d="M0 120L160 90L200 230L30 260Z M160 90L330 60L370 200L200 230 M30 260L200 230L230 400L0 430 M200 230L370 200L400 360L230 400"/>
-          </g>
-          <g fill="rgba(238,242,246,.14)" font-family="Heebo,sans-serif" font-size="12"><text x="70" y="180">חלקה 12</text><text x="240" y="150">חלקה 13</text><text x="260" y="310">גוש 6158</text></g>
-        </svg>
+        <img src="yoni.jpg" alt="יוני כהן, שמאי מקרקעין" width="457" height="504">
         <div class="cap"><b>יוני כהן</b><span>שמאי מקרקעין וכלכלן, מייסד ומנהל המשרד</span></div>
         <div class="lic">רישיון שמאי מקרקעין מס' 4147184</div>
       </div>
