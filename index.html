@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>יוני כהן שמאות מקרקעין</title>
+<meta name="description" content="יוני כהן שמאות מקרקעין, ייעוץ כלכלי והשקעות. משרד בוטיק המתמחה בהתחדשות עירונית, ליווי פיננסי, היטלי השבחה וחוות דעת לבתי משפט.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=IBM+Plex+Sans+Hebrew:wght@400;500;600&display=swap">
+<style>
+/* Layout: cadastral-plan motif. Survey-ink blue ground in the hero, parcel lines as ornament,
+   a brass "license plate" for credentials, then calm stone-white sections with a 12-col rhythm. */
+:root{
+  --bg:#f4f5f2;          /* survey paper */
+  --surface:#ffffff;
+  --ink:#16222e;         /* text */
+  --muted:#56636f;
+  --line:#d9ddd6;
+  --plan:#123349;        /* deep plan blue */
+  --plan-fg:#e9eef1;
+  --plan-line:rgba(233,238,241,.16);
+  --brass:#a77b3a;       /* accent */
+  --brass-soft:#f1e6d3;
+  --on-brass:#ffffff;
+  --display:"Frank Ruhl Libre","David Libre","Times New Roman",serif;
+  --body:"IBM Plex Sans Hebrew","Assistant","Arial Hebrew",Arial,sans-serif;
+  --wrap:1180px;
+  --radius:4px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f161d; --surface:#151f28; --ink:#e6eaee; --muted:#9aa7b2; --line:#26333f;
+    --plan:#0b1f2d; --plan-fg:#e6edf1; --plan-line:rgba(230,237,241,.12);
+    --brass:#d0a35e; --brass-soft:#2b2318; --on-brass:#141008;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f161d; --surface:#151f28; --ink:#e6eaee; --muted:#9aa7b2; --line:#26333f;
+  --plan:#0b1f2d; --plan-fg:#e6edf1; --plan-line:rgba(230,237,241,.12);
+  --brass:#d0a35e; --brass-soft:#2b2318; --on-brass:#141008;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.7;direction:rtl;text-align:right}
+a{color:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);line-height:1.2;text-wrap:balance;margin:0}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:20px}
+.ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+.eyebrow{font-size:.8rem;font-weight:600;letter-spacing:.08em;color:var(--brass);text-transform:uppercase}
+
+/* Header */
+.topline{background:var(--plan);color:var(--plan-fg);font-size:.82rem}
+.topline .wrap{display:flex;justify-content:space-between;gap:12px;padding-block:6px;flex-wrap:wrap}
+.topline a{text-decoration:none;opacity:.9}
+.topline .contact-mini{display:flex;gap:18px;flex-wrap:wrap}
+header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand-mark{width:42px;height:42px;flex:none}
+.brand-name{font-family:var(--display);font-weight:900;font-size:1.45rem;line-height:1}
+.brand-sub{display:block;font-size:.78rem;color:var(--muted);margin-top:4px;line-height:1.2}
+nav.main ul{list-style:none;margin:0;padding:0;display:flex;gap:4px}
+nav.main a{display:block;padding:8px 12px;text-decoration:none;font-weight:500;font-size:.95rem;border-radius:var(--radius)}
+nav.main a:hover{background:var(--bg)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:var(--radius);font-weight:600;text-decoration:none;border:1px solid transparent;cursor:pointer;font:inherit;font-weight:600}
+.btn-brass{background:var(--brass);color:var(--on-brass)}
+.btn-brass:hover{filter:brightness(1.08)}
+.btn-ghost{border-color:currentColor;background:transparent;color:inherit}
+.menu-toggle{display:none;background:none;border:1px solid var(--line);border-radius:var(--radius);padding:8px 12px;font:inherit;color:inherit;cursor:pointer}
+@media (max-width:980px){
+  .menu-toggle{display:block}
+  .header-cta{display:none}
+  nav.main{position:absolute;inset-inline:0;top:100%;background:var(--surface);border-bottom:1px solid var(--line)}
+  nav.main:not(.open){display:none}
+  nav.main ul{flex-direction:column;padding:8px 20px 16px}
+}
+
+/* Hero */
+.hero{position:relative;background:var(--plan);color:var(--plan-fg);overflow:hidden}
+.hero svg.parcels{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:48px;padding-block:80px 72px;align-items:center}
+.hero h1{font-size:clamp(2.1rem,4.6vw,3.6rem);font-weight:700;margin-top:14px}
+.hero h1 em{font-style:normal;color:var(--brass)}
+.hero .lead{margin-top:20px;font-size:1.12rem;max-width:58ch;opacity:.88}
+.hero .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.plate{border:1px solid var(--plan-line);background:rgba(255,255,255,.04);padding:28px;border-radius:var(--radius)}
+.plate h2{font-size:1.1rem;font-family:var(--body);font-weight:600;letter-spacing:.02em;opacity:.75}
+.plate dl{margin:16px 0 0;display:grid;gap:14px}
+.plate dt{font-size:.8rem;opacity:.65}
+.plate dd{margin:0;font-family:var(--display);font-size:1.3rem;font-weight:500}
+.plate .lic{font-variant-numeric:tabular-nums;letter-spacing:.06em;color:var(--brass)}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr;padding-block:56px}}
+
+/* Figures */
+.figures{background:var(--surface);border-bottom:1px solid var(--line)}
+.figures .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.fig{padding:28px 20px;border-inline-start:1px solid var(--line)}
+.fig:first-child{border-inline-start:0}
+.fig b{display:block;font-family:var(--display);font-size:2.1rem;font-weight:700;color:var(--plan);font-variant-numeric:tabular-nums;line-height:1.1}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .fig b{color:var(--brass)}}
+:root[data-theme="dark"] .fig b{color:var(--brass)}
+.fig span{color:var(--muted);font-size:.92rem}
+@media (max-width:760px){.figures .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}.fig:nth-child(3){border-inline-start:0}.fig{border-top:1px solid var(--line)}.fig:nth-child(-n+2){border-top:0}}
+
+/* Sections */
+section.block{padding-block:88px}
+.sec-head{display:grid;gap:10px;margin-bottom:44px;max-width:720px}
+.sec-head h2{font-size:clamp(1.8rem,3.2vw,2.6rem);font-weight:700}
+.sec-head p{color:var(--muted)}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:56px;align-items:start}
+.about-text{display:grid;gap:18px;max-width:65ch}
+.about-text p:first-child{font-family:var(--display);font-size:1.35rem;line-height:1.55}
+.aside-card{background:var(--surface);border:1px solid var(--line);padding:28px;border-radius:var(--radius)}
+.aside-card h3{font-size:1.2rem;margin-bottom:14px}
+.ticks{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.ticks li{position:relative;padding-inline-start:22px}
+.ticks li::before{content:"";position:absolute;inset-inline-start:0;top:.7em;width:10px;height:10px;border:2px solid var(--brass);transform:rotate(45deg)}
+@media (max-width:860px){.about-grid{grid-template-columns:1fr}}
+
+/* Services */
+.services{background:var(--surface);border-block:1px solid var(--line)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);border-inline-start:1px solid var(--line)}
+.svc{padding:30px 28px 34px;border-bottom:1px solid var(--line);border-inline-end:1px solid var(--line);display:grid;gap:12px;align-content:start}
+.svc .code{font-size:.75rem;color:var(--muted);letter-spacing:.06em;font-variant-numeric:tabular-nums}
+.svc h3{font-size:1.32rem}
+.svc p{color:var(--muted);font-size:.96rem}
+.svc .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.svc .tags span{font-size:.78rem;background:var(--brass-soft);color:var(--ink);padding:2px 9px;border-radius:999px}
+@media (max-width:960px){.svc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.svc-grid{grid-template-columns:1fr}}
+
+/* Projects */
+.proj-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:56px;align-items:start}
+.proj-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:32px}
+.proj-list li{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.proj-list .name{font-weight:500}
+.proj-list .city{color:var(--brass);font-size:.88rem;white-space:nowrap;font-weight:600}
+.banks{margin-top:28px;display:grid;gap:10px}
+.banks .row{display:flex;flex-wrap:wrap;gap:8px}
+.banks .row span{border:1px solid var(--line);background:var(--surface);padding:6px 14px;border-radius:var(--radius);font-size:.92rem}
+@media (max-width:900px){.proj-wrap{grid-template-columns:1fr}}
+@media (max-width:620px){.proj-list{grid-template-columns:1fr}}
+
+/* Education timeline */
+.edu{background:var(--plan);color:var(--plan-fg)}
+.edu .sec-head p{color:inherit;opacity:.75}
+.timeline{list-style:none;margin:0;padding:0;display:grid;gap:0;border-inline-start:1px solid var(--plan-line);max-width:860px}
+.timeline li{display:grid;grid-template-columns:120px minmax(0,1fr);gap:24px;padding:18px 24px 18px 0;position:relative}
+.timeline li::before{content:"";position:absolute;inset-inline-start:-5px;top:28px;width:9px;height:9px;background:var(--brass);border-radius:50%}
+.timeline .yr{font-variant-numeric:tabular-nums;font-weight:600;color:var(--brass);padding-inline-start:20px}
+.timeline .what b{display:block;font-weight:600}
+.timeline .what span{opacity:.75;font-size:.95rem}
+@media (max-width:560px){.timeline li{grid-template-columns:1fr;gap:4px}.timeline .what{padding-inline-start:20px}}
+
+/* Recommenders */
+.rec-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 32px}
+.rec-grid div{padding:16px 0;border-bottom:1px solid var(--line)}
+.rec-grid b{display:block;font-weight:600}
+.rec-grid span{color:var(--muted);font-size:.92rem}
+.reviews{margin-top:44px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.reviews .lbl{font-weight:600;margin-inline-end:8px}
+.reviews a{border:1px solid var(--line);background:var(--surface);padding:10px 18px;border-radius:var(--radius);text-decoration:none;font-weight:500}
+.reviews a:hover{border-color:var(--brass)}
+@media (max-width:860px){.rec-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.rec-grid{grid-template-columns:1fr}}
+
+/* Contact */
+.contact{background:var(--surface);border-top:1px solid var(--line)}
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:56px}
+.c-items{display:grid;gap:22px;margin-top:8px}
+.c-item small{display:block;color:var(--muted);font-size:.82rem}
+.c-item a,.c-item p{font-family:var(--display);font-size:1.4rem;font-weight:500;text-decoration:none}
+form.lead-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;background:var(--bg);border:1px solid var(--line);padding:28px;border-radius:var(--radius)}
+form.lead-form .full{grid-column:1/-1}
+form.lead-form label{display:grid;gap:6px;font-size:.88rem;font-weight:500}
+form.lead-form input,form.lead-form select,form.lead-form textarea{font:inherit;font-size:1rem;padding:11px 12px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);color:var(--ink);width:100%}
+form.lead-form textarea{min-height:110px;resize:vertical}
+.form-note{font-size:.85rem;color:var(--muted)}
+.form-msg{font-size:.92rem;color:var(--brass);font-weight:600}
+@media (max-width:860px){.contact-grid{grid-template-columns:1fr}}
+@media (max-width:520px){form.lead-form{grid-template-columns:1fr}}
+
+footer.site{background:var(--plan);color:var(--plan-fg);font-size:.88rem}
+footer.site .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:28px;opacity:.85}
+</style>
+</head>
+<body>
+
+
+<div class="topline">
+  <div class="wrap">
+    <span>בס"ד</span>
+    <div class="contact-mini">
+      <a href="tel:+972508258779"><span class="ltr">050-8258779</span></a>
+      <a href="mailto:Yshamaut@gmail.com"><span class="ltr">Yshamaut@gmail.com</span></a>
+      <span>כנרת 10, קריית שדה התעופה</span>
+    </div>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="יוני כהן שמאות מקרקעין, לעמוד הבית">
+      <svg class="brand-mark" viewBox="0 0 42 42" aria-hidden="true">
+        <rect x="1" y="1" width="40" height="40" fill="none" stroke="var(--plan)" stroke-width="2"/>
+        <path d="M1 26 L18 20 L24 41 M18 20 L28 1 M24 30 L41 24" fill="none" stroke="var(--plan)" stroke-width="1.5"/>
+        <circle cx="18" cy="20" r="3" fill="var(--brass)"/>
+      </svg>
+      <span>
+        <span class="brand-name">יוני כהן</span>
+        <span class="brand-sub">שמאות מקרקעין, ייעוץ כלכלי והשקעות</span>
+      </span>
+    </a>
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-nav">תפריט</button>
+    <nav class="main" id="main-nav" aria-label="ניווט ראשי">
+      <ul>
+        <li><a href="#about">אודות</a></li>
+        <li><a href="#services">תחומי פעילות</a></li>
+        <li><a href="#projects">פרויקטים</a></li>
+        <li><a href="#education">השכלה והסמכות</a></li>
+        <li><a href="#references">ממליצים</a></li>
+        <li><a href="#contact">צור קשר</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-brass header-cta" href="#contact">לתיאום שומה</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <svg class="parcels" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <g fill="none" stroke="var(--plan-line)" stroke-width="1.2">
+        <path d="M0 140 L260 110 L330 260 L80 300 Z"/>
+        <path d="M260 110 L520 70 L560 230 L330 260"/>
+        <path d="M520 70 L760 40 L800 210 L560 230"/>
+        <path d="M80 300 L330 260 L360 470 L40 520"/>
+        <path d="M330 260 L560 230 L600 440 L360 470"/>
+        <path d="M560 230 L800 210 L860 420 L600 440"/>
+        <path d="M800 210 L1040 170 L1100 380 L860 420"/>
+        <path d="M760 40 L1000 0 L1040 170"/>
+        <path d="M1040 170 L1200 150 M1100 380 L1200 370 M860 420 L900 520 M600 440 L620 520"/>
+      </g>
+      <g fill="var(--plan-line)" font-family="IBM Plex Sans Hebrew, sans-serif" font-size="13">
+        <text x="180" y="210">חלקה 12</text>
+        <text x="420" y="170">חלקה 13</text>
+        <text x="650" y="140">חלקה 14</text>
+        <text x="440" y="360">חלקה 27</text>
+        <text x="930" y="300">חלקה 31</text>
+      </g>
+    </svg>
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">משרד בוטיק לשמאות מקרקעין | נוסד 2018</span>
+        <h1>שמאות מקרקעין לפרויקטים, ליזמים ולבתי המשפט, <em>עם ראייה כלכלית.</em></h1>
+        <p class="lead">התמחות בהתחדשות עירונית ובפרויקטים לבנייה: הערכות שווי, דוחות אפס וליווי פיננסי, היטלי השבחה, תביעות לפי סעיף 197, טבלאות איזון וחוות דעת מומחה לבתי המשפט.</p>
+        <div class="actions">
+          <a class="btn btn-brass" href="#contact">השאירו פרטים</a>
+          <a class="btn btn-ghost" href="#services">תחומי הפעילות</a>
+        </div>
+      </div>
+      <aside class="plate" aria-label="הסמכות">
+        <h2>יוני כהן, שמאי מקרקעין וכלכלן</h2>
+        <dl>
+          <div><dt>רישיון שמאי מקרקעין</dt><dd class="lic">מס' 4147184</dd></div>
+          <div><dt>מומחה מטעם בית המשפט</dt><dd>שמאות מקרקעין וענייני משפחה</dd></div>
+          <div><dt>בוררות</dt><dd>בורר מוסמך בעולם הנדל"ן</dd></div>
+          <div><dt>השכלה</dt><dd>B.A. כלכלה ומנהל עסקים, בהצטיינות</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <div class="figures">
+    <div class="wrap">
+      <div class="fig"><b>2015</b><span>ניסיון בשמאות מקרקעין</span></div>
+      <div class="fig"><b>2017</b><span>רשום בפנקס שמאי המקרקעין</span></div>
+      <div class="fig"><b>2018</b><span>הקמת המשרד</span></div>
+      <div class="fig"><b>עשרות אלפי</b><span>יח"ד בליווי פיננסי ושומות לבנקים</span></div>
+    </div>
+  </div>
+
+  <section class="block" id="about">
+    <div class="wrap about-grid">
+      <div>
+        <div class="sec-head"><span class="eyebrow">אודות המשרד</span><h2>יוני כהן שמאות מקרקעין, ייעוץ כלכלי והשקעות</h2></div>
+        <div class="about-text">
+          <p>המשרד נוסד בשנת 2018 על ידי יוני כהן, שמאי מקרקעין וכלכלן, ומנוהל על ידו מאז ועד היום.</p>
+          <p>המשרד הוא משרד בוטיק המתמחה בהתחדשות עירונית ובפרויקטים לבנייה, בתחומי הערכות שווי, התכנון והבנייה, היטלי השבחה, תביעות לפי סעיף 197, טבלאות איזון ופרויקטים מורכבים, וכן במתן חוות דעת להליכים משפטיים מטעם בתי המשפט בישראל ועבורם.</p>
+          <p>אנו מעניקים שירותי שמאות מקרקעין וייעוץ כלכלי לפני השקעה, רכישה או מכירה של נכסי מקרקעין, בחינות היטלי השבחה והערכות שווי לכל סוגי הייעודים. למשרד ניסיון רב בעבודה עבור המערכת הבנקאית, בליווי פיננסי של פרויקטים לבנייה ובשומות לצורכי אשראי בנקאי.</p>
+          <p>עיקר העבודה מתבצעת במרכז הארץ, בעיקר בערים הגדולות שבין תל אביב לירושלים. המשרד מקפיד על שירות ויחסי אנוש ברמה גבוהה ועל עמידה בלוחות זמנים.</p>
+        </div>
+      </div>
+      <div class="aside-card">
+        <h3>חברות ופעילות מקצועית</h3>
+        <ul class="ticks">
+          <li>חבר לשכת שמאי המקרקעין בישראל</li>
+          <li>חבר בוועדת מחקרי שוק של לשכת שמאי המקרקעין בישראל (ע"ר): סדנאות, מחקרים, הרצאות מקצועיות, השתלמויות וכנסים</li>
+          <li>ברשימת המומחים מטעם בית המשפט בתחום שמאות מקרקעין</li>
+          <li>ברשימת מומחי בית המשפט לענייני משפחה</li>
+          <li>בורר מוסמך</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block services" id="services">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">תחומי פעילות</span><h2>מהערכת שווי ועד ליווי פרויקט עד מסירה</h2><p>שירות מקצועי ליזמים, לדיירים, לבנקים, לעורכי דין ולבתי המשפט.</p></div>
+      <div class="svc-grid">
+        <article class="svc">
+          <h3>התחדשות עירונית</h3>
+          <p>בחינת היתכנות כלכלית מטעם יזמים, קבלני ביצוע ודיירים. ליווי בפרויקטי פינוי בינוי, תמ"א 38 חיזוק ותוספות ותמ"א 38 הריסה ובנייה מחדש, עסקאות קומבינציה, הערכת נזקים בגין דיירים סרבנים וטבלאות ניקוד.</p>
+          <div class="tags"><span>פינוי בינוי</span><span>תמ"א 38</span><span>קומבינציה</span></div>
+        </article>
+        <article class="svc">
+          <h3>שמאי דיירים</h3>
+          <p>הערכת טבלאות ניקוד, דמי שכירות ראויים בזמן ביצוע הפרויקט ועדכונם, הערכת שווי דירות הדיירים לקבלת ערבויות חוק מכר לפני הריסה, ובחינת דוח האפס של היזם.</p>
+          <div class="tags"><span>טבלאות ניקוד</span><span>ערבויות חוק מכר</span></div>
+        </article>
+        <article class="svc">
+          <h3>ליווי פיננסי לבנקים</h3>
+          <p>דוחות אפס וניתוח כדאיות כלכלית לפרויקטים לבנייה. מעקב ביצוע, פיקוח, בקרה ושחרור כספים בהתאם לקצב ההתקדמות, עבור עשרות אלפי יח"ד, מרכזים מסחריים, קניונים, משרדים, מלונאות ותעשייה.</p>
+          <div class="tags"><span>דוח אפס</span><span>מעקב ביצוע</span></div>
+        </article>
+        <article class="svc">
+          <h3>משכנתאות ובטוחות לאשראי</h3>
+          <p>חוות דעת לצורכי שעבוד בהיקף של אלפי יח"ד, שומות שווי שוק, ערך למטרת בטוחה לאשראי לפי תקן 19, שומות טרום רכישה וחישוב מיסוי והיטלים.</p>
+          <div class="tags"><span>תקן 19</span><span>שומות טרום רכישה</span></div>
+        </article>
+        <article class="svc">
+          <h3>בתי משפט, בוררויות וגישורים</h3>
+          <p>חוות דעת מומחה לבתי המשפט ברחבי הארץ, לבוררויות ולגישורים, לכל סוגי הנכסים. עבור בתי המשפט, משרדי עורכי דין, חברות נדל"ן וגופים פרטיים.</p>
+          <div class="tags"><span>מומחה בית משפט</span><span>בורר מוסמך</span></div>
+        </article>
+        <article class="svc">
+          <h3>היטל השבחה ותביעות 197</h3>
+          <p>שומות היטל השבחה, השגות ושומות נגדיות, ייצוג מול שמאי מכריע, ייעוץ בעניין פטורים והקלות. תביעות פיצויים לפי סעיף 197 לחוק התכנון והבנייה.</p>
+          <div class="tags"><span>שמאי מכריע</span><span>סעיף 197</span></div>
+        </article>
+        <article class="svc">
+          <h3>רשות מקרקעי ישראל</h3>
+          <p>שומות למגזר החקלאי והעירוני, בחינות והשגות על גובה התשלומים לרמ"י בעת בנייה או מכירה, שומות נגדיות וייצוג בהשגות.</p>
+          <div class="tags"><span>נחלות ומשקי עזר</span><span>השגות</span></div>
+        </article>
+        <article class="svc">
+          <h3>מיסוי מקרקעין</h3>
+          <p>שומות לצורכי מס שבח, ייצוג נישומים מול מיסוי מקרקעין ושומות נגדיות לשומות לפי מיטב השפיטה.</p>
+          <div class="tags"><span>מס שבח</span><span>מיטב השפיטה</span></div>
+        </article>
+        <article class="svc">
+          <h3>ליווי וייעוץ לחברות נדל"ן</h3>
+          <p>פיתוח עסקי, דוחות אפס, בחינת פרויקטים כחברה יזמית, קבוצות רכישה וקומבינציה. פגישות מול בעלי קרקעות, הכנת הצעות ומשא ומתן.</p>
+          <div class="tags"><span>קבוצות רכישה</span><span>ייזום</span></div>
+        </article>
+      </div>
+      <div class="aside-card" style="margin-top:32px">
+        <h3>הערכות שווי לכל סוגי הנכסים</h3>
+        <p style="color:var(--muted)">פרויקטים למגורים, דירות בבנייה רוויה ובתים צמודי קרקע, דיירים מוגנים, קניונים ומרכזים מסחריים, בתי מלון, משרדים, חנויות, מבנים לשימור, אחסנה ולוגיסטיקה. וכן חוות דעת לעלויות בנייה, נזקים, שיפוצים ושדרוגים.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="projects">
+    <div class="wrap proj-wrap">
+      <div>
+        <div class="sec-head"><span class="eyebrow">פרויקטים נבחרים</span><h2>מתחמי התחדשות עירונית בטיפול המשרד</h2><p>רשימה מקוצרת של פרויקטים עם דיירים קיימים. לצדם ליווי של עשרות פרויקטים לבנייה בשלבים שונים.</p></div>
+        <div class="banks">
+          <span class="eyebrow">שומות עבור</span>
+          <div class="row"><span>בנק לאומי</span><span>בנק הפועלים</span><span>בנק דיסקונט</span><span>הבנק הבינלאומי</span><span>חברות אשראי חוץ בנקאי</span></div>
+        </div>
+      </div>
+      <ul class="proj-list">
+        <li><span class="name">מתחם מרכז מסחרי נווה אליעזר</span><span class="city">תל אביב יפו</span></li>
+        <li><span class="name">פיארברג 10</span><span class="city">תל אביב יפו</span></li>
+        <li><span class="name">מתחם יאנוש קורצ'ק</span><span class="city">נתניה</span></li>
+        <li><span class="name">מתחם ברל לוקר 25-26</span><span class="city">ירושלים</span></li>
+        <li><span class="name">רוטשילד 28-30</span><span class="city">פתח תקווה</span></li>
+        <li><span class="name">מתחם שיכון גורדון</span><span class="city">הרצליה</span></li>
+        <li><span class="name">מתחם צה"ל, יוספטל וזבולון</span><span class="city">קריית ים</span></li>
+        <li><span class="name">מתחם אבא הלל, התקווה, חרות</span><span class="city">רמת גן</span></li>
+        <li><span class="name">מתחם ברוריה</span><span class="city">ירושלים</span></li>
+        <li><span class="name">מתחם מקסיקו 6 ו־6א</span><span class="city">ירושלים</span></li>
+        <li><span class="name">מתחם שלמה המלך 42, 44 ופנקס 2</span><span class="city">לוד</span></li>
+        <li><span class="name">מתחם טויטו</span><span class="city">לוד</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block edu" id="education">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">השכלה והסמכות</span><h2>הכשרה מקצועית מתמשכת</h2><p>לימודי כלכלה, רישוי בשמאות מקרקעין והתמחויות משלימות בבוררות, במיסוי ובשמאות רכוש.</p></div>
+      <ol class="timeline">
+        <li><span class="yr">2025</span><span class="what"><b>שמאי רכוש</b><span>מסלול הכשרה ייעודי להתמחות בשמאות רכוש, מכללת אורנ'ס</span></span></li>
+        <li><span class="yr">2025</span><span class="what"><b>בורר מוסמך</b><span>הכשרת בוררים בעולם הנדל"ן, לשכת שמאי המקרקעין בישראל בשיתוף מרכז פישר</span></span></li>
+        <li><span class="yr">2025</span><span class="what"><b>מיסוי מקרקעין</b><span>תעודת קורס ופרקטיקום, לשכת שמאי המקרקעין בישראל</span></span></li>
+        <li><span class="yr">2022-2023</span><span class="what"><b>נחלות ומשקי עזר בעידן ההיוון</b><span>השתלמות תעודה</span></span></li>
+        <li><span class="yr">2016-2017</span><span class="what"><b>קורס היטל השבחה</b><span>האוניברסיטה העברית, בית הספר למנהל עסקים, בשיתוף מרכז גלובס לנדל"ן ולשכת שמאי המקרקעין</span></span></li>
+        <li><span class="yr">2015-2017</span><span class="what"><b>שמאי מקרקעין מוסמך</b><span>לימודי שמאות מקרקעין, רישיון מס' 4147184</span></span></li>
+        <li><span class="yr">2012-2015</span><span class="what"><b>B.A. כלכלה ומנהל עסקים, בהצטיינות</b><span>אוניברסיטת אריאל, וכן לימודי תעודה בשמאות מקרקעין</span></span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="references">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">ממליצים</span><h2>ממליצים מתוך עבודה משותפת</h2><p>רשימה מקוצרת של יזמים, חברות בנייה ועורכי דין שעבדו עם המשרד.</p></div>
+      <div class="rec-grid">
+        <div><b>איתי סמדר</b><span>מנכ"ל, רוטשטיין התחדשות עירונית בע"מ</span></div>
+        <div><b>משה ריצ'ארד</b><span>סמנכ"ל תפעול ושירות, ט.ר.א התחדשות עירונית בע"מ</span></div>
+        <div><b>ניסים בריח</b><span>מנכ"ל ובעלים, קבוצת נווה העיר</span></div>
+        <div><b>גיא דהן</b><span>מנהל תפעול ומגורים, דונה חברה להנדסה ובנין בע"מ</span></div>
+        <div><b>יואב רייכטלר</b><span>יועץ משפטי, אסיה סיירוס פיתוח וייזום בע"מ</span></div>
+        <div><b>אבידן אושרי</b><span>מהנדס, שלום את נתן בניה ופיתוח בע"מ</span></div>
+        <div><b>ליהי ברנס</b><span>עזרה וביצרון חברה לשיכון בע"מ, עיריית תל אביב יפו</span></div>
+        <div><b>עו"ד אבירם סרדס</b><span>עו"ד נדל"ן</span></div>
+        <div><b>עו"ד אורי סקוזה</b><span>עו"ד נדל"ן</span></div>
+        <div><b>עו"ד אירית ינקוביץ'</b><span>עו"ד נדל"ן</span></div>
+        <div><b>עו"ד שלום גן אל</b><span>עו"ד נדל"ן</span></div>
+        <div><b>עו"ד מיכאל לבן</b><span>עו"ד נדל"ן</span></div>
+        <div><b>עו"ד ארנון כהן</b><span>עו"ד נדל"ן</span></div>
+        <div><b>עו"ד רונן ניר</b><span>עו"ד נדל"ן</span></div>
+        <div><b>עו"ד עידן אטיאס</b><span>עו"ד נדל"ן</span></div>
+      </div>
+      <div class="reviews">
+        <span class="lbl">המלצות לקוחות:</span>
+        <a href="https://g.co/kgs/R9F8KVz" target="_blank" rel="noopener">Google</a>
+        <a href="https://www.midrag.co.il/SpCard/Sp/63827?areaId=1&amp;serviceId=856" target="_blank" rel="noopener">מדרג</a>
+        <a href="https://www.pro.co.il/real-estate-appraisers/business-id-16127" target="_blank" rel="noopener">המקצוענים</a>
+        <a href="https://www.d.co.il/80288388/49080/" target="_blank" rel="noopener">דפי זהב</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block contact" id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <div class="sec-head"><span class="eyebrow">צור קשר</span><h2>נשמח לבחון את הנכס או הפרויקט שלכם</h2><p>ספרו לנו בקצרה במה מדובר ונחזור אליכם.</p></div>
+        <div class="c-items">
+          <div class="c-item"><small>נייד</small><a href="tel:+972508258779"><span class="ltr">050-8258779</span></a></div>
+          <div class="c-item"><small>דוא"ל</small><a href="mailto:Yshamaut@gmail.com"><span class="ltr">Yshamaut@gmail.com</span></a></div>
+          <div class="c-item"><small>כתובת המשרד</small><p>כנרת 10, קריית שדה התעופה</p></div>
+        </div>
+      </div>
+      <form class="lead-form" id="lead-form" novalidate>
+        <label>שם מלא<input id="f-name" name="name" required autocomplete="name"></label>
+        <label>טלפון<input id="f-phone" name="phone" type="tel" required autocomplete="tel" dir="ltr"></label>
+        <label class="full">נושא הפנייה
+          <select id="f-topic" name="topic">
+            <option>התחדשות עירונית / שמאי דיירים</option>
+            <option>ליווי פיננסי / דוח אפס</option>
+            <option>היטל השבחה / תביעת 197</option>
+            <option>חוות דעת לבית משפט / בוררות</option>
+            <option>רשות מקרקעי ישראל</option>
+            <option>מיסוי מקרקעין</option>
+            <option>הערכת שווי נכס</option>
+            <option>אחר</option>
+          </select>
+        </label>
+        <label class="full">פרטים נוספים<textarea id="f-msg" name="message" placeholder="כתובת הנכס, גוש וחלקה אם ידוע, ומה נדרש"></textarea></label>
+        <div class="full" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+          <button class="btn btn-brass" type="submit">שליחה בוואטסאפ</button>
+          <span class="form-msg" id="form-msg" role="status"></span>
+        </div>
+        <p class="form-note full">הפרטים נשלחים כהודעת וואטסאפ למשרד. אפשר גם להתקשר ישירות.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>© יוני כהן שמאות מקרקעין, ייעוץ כלכלי והשקעות</span>
+    <span>שמאי מקרקעין מוסמך, רישיון מס' 4147184</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var t=document.getElementById('menu-toggle'),n=document.getElementById('main-nav');
+  t.addEventListener('click',function(){var o=n.classList.toggle('open');t.setAttribute('aria-expanded',o)});
+  n.addEventListener('click',function(e){if(e.target.tagName==='A'){n.classList.remove('open');t.setAttribute('aria-expanded','false')}});
+  var f=document.getElementById('lead-form'),m=document.getElementById('form-msg');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var g=function(i){return document.getElementById(i).value.trim()};var name=g('f-name'),phone=g('f-phone'),topic=g('f-topic'),msg=g('f-msg');
+    if(!name||!phone){m.textContent='נא למלא שם וטלפון';return}
+    var text='שלום יוני, פנייה מהאתר\nשם: '+name+'\nטלפון: '+phone+'\nנושא: '+topic+(msg?'\nפרטים: '+msg:'');
+    var a=document.createElement('a');a.href='https://wa.me/972508258779?text='+encodeURIComponent(text);a.target='_blank';a.rel='noopener';
+    document.body.appendChild(a);a.click();a.remove();
+    m.textContent='וואטסאפ נפתח בחלון חדש עם ההודעה';
+  });
+})();
+</script>
+</body>
+</html>
